@@ -1,8 +1,6 @@
 module RSpec
   module Core
     module Hooks
-      include MetadataHashBuilder::WithConfigWarning
-
       class Hook
         attr_reader :block, :options
 
@@ -481,7 +479,7 @@ module RSpec
       end
 
       def scope_and_options_from(*args)
-        return extract_scope_from(args), build_metadata_hash_from(args)
+        return extract_scope_from(args), Metadata.build_hash_from(args)
       end
 
       def extract_scope_from(args)
